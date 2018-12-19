@@ -1,26 +1,27 @@
 const firebase = require('../firebase');
 const {Storage} = require('@google-cloud/storage');
+const {FIREBASE_PROJECT_ID, FIREBASE_STORAGE_BUCKET} = require('../constants');
 // Database instance from firebase
 const database = firebase.database();
 // var config = {
 //     projectId: 'iotproject999-b5fee'
 //   };
-const projectId = 'iotproject999-b5fee';
+// const projectId = 'iotproject999-b5fee';
 
 // Creates a client
 const storage = new Storage({
-  projectId: projectId,
+  projectId: FIREBASE_PROJECT_ID,
   keyFilename : '/home/karthik/Documents/Personal_Utilites/Projects/Node/smart_home_pi/iotproject999-b5fee-firebase-adminsdk-g3cyz-55b28f69c0.json'
 });
   
-const bucket = storage.bucket(process.env.FIREBASE_STORAGE_BUCKET);
-const file = "/home/karthik/Documents/Personal_Utilites/Projects/Node/smart_home_pi/src/images/FarmerWithTechnology.jpg";
-const fileMime = "image/jpg";
-const remotePath = "/images";
+const bucket = storage.bucket(FIREBASE_STORAGE_BUCKET);
+const file = "/home/karthik/Documents/Personal_Utilites/Projects/Node/smart_home_pi/src/images/videoplayback1.mp4";
+const fileMime = "video/mp4";
+const remotePath = "/videos";
 
 var upload = (filePath, remoteFile, fileMime) => {
 
-    let uuid = "1";
+    let uuid = "2";
 
     return bucket.upload(filePath, {
           destination: remoteFile,

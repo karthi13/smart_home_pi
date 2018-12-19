@@ -1,0 +1,21 @@
+const FIREBASE_API_KEY="AIzaSyARTmEwV9NM73zDwQEk50oM6DRuacjoHzQ"
+const FIREBASE_AUTH_DOMAIN="iotproject999-b5fee.firebaseapp.com"
+const FIREBASE_DATABASE_URL="https://iotproject999-b5fee.firebaseio.com"
+const FIREBASE_PROJECT_ID="iotproject999-b5fee" 
+const FIREBASE_STORAGE_BUCKET="iotproject999-b5fee.appspot.com"
+const FIREBASE_MESSAGING_SENDER_ID="186171741781"
+const FIREBASE_LOGIN="firebasehkr@gmail.com"
+const FIREBASE_PASSWORD="Firebase@123"
+const HSAPI110_URL=""
+
+module.exports = {
+    FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN,
+    FIREBASE_DATABASE_URL,
+    FIREBASE_LOGIN,
+    FIREBASE_MESSAGING_SENDER_ID,
+    FIREBASE_PASSWORD,
+    FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET,
+    HSAPI110_URL
+}

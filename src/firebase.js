@@ -14,4 +14,5 @@ firebase.auth().signInWithEmailAndPassword(process.env.FIREBASE_LOGIN, process.e
         console.log('Firebase sign in failed: ' + error.code + ' -' + error.message);
 });
 
+
 module.exports = firebase;

@@ -6,7 +6,7 @@ const FIREBASE_STORAGE_BUCKET="iotproject999-b5fee.appspot.com"
 const FIREBASE_MESSAGING_SENDER_ID="186171741781"
 const FIREBASE_LOGIN="firebasehkr@gmail.com"
 const FIREBASE_PASSWORD="Firebase@123"
-const HSAPI110_URL=""
+const HSAPI100_URL="192.168.230.201"
 
 module.exports = {
     FIREBASE_API_KEY,
@@ -17,5 +17,5 @@ module.exports = {
     FIREBASE_PASSWORD,
     FIREBASE_PROJECT_ID,
     FIREBASE_STORAGE_BUCKET,
-    HSAPI110_URL
+    HSAPI100_URL
 }

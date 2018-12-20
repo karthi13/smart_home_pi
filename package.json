@@ -17,7 +17,9 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
-    "thingy52": "^1.0.4"
+    "python-shell": "^1.0.6",
+    "thingy52": "^1.0.4",
+    "tplink-smarthome-api": "^0.23.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.7"

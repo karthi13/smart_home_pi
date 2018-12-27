@@ -11,15 +11,15 @@ const database = firebase.database();
 // Creates a client
 const storage = new Storage({
   projectId: FIREBASE_PROJECT_ID,
-  keyFilename: '/home/karthik/Documents/Personal_Utilites/Projects/Node/smart_home_pi/iotproject999-b5fee-firebase-adminsdk-g3cyz-55b28f69c0.json'
+  keyFilename: '/home/pi/Desktop/smart_home_pi/iotproject999-b5fee-firebase-adminsdk-g3cyz-55b28f69c0.json'
 });
 
 const bucket = storage.bucket(FIREBASE_STORAGE_BUCKET);
-const file = "/home/karthik/Documents/Personal_Utilites/Projects/Node/smart_home_pi/src/images/videoplayback1.mp4";
+const file = "/home/pi/Desktop/smart_home_pi/src/images/videoplayback1.mp4";
 const fileMime = "video/mp4";
 const remotePath = "/videos";
 
-var upload = (filePath, remoteFile, fileMime) => {
+exports.uploadVideoFile = (filePath, remoteFile, fileMime) => {
 
   let uuid = "2";
 
@@ -42,9 +42,9 @@ var upload = (filePath, remoteFile, fileMime) => {
 }
 
 //This function is for generation download url    
-upload(file, remotePath, fileMime).then(downloadURL => {
-  console.log(downloadURL);
-});
+// uploadVideoFile(file, remotePath, fileMime).then(downloadURL => {
+//   console.log(downloadURL);
+// });
 //Storage instance from firebase
 // const firebaseStorageRef = firebase.storage().ref();
 

@@ -24,15 +24,17 @@ firebase_admin.initialize_app(cred, {
 
 pir= MotionSensor(4)
 while True:
+
     motion = pir.motion_detected
     if motion == True :
-        
+          
         try:
+             
             camera= PiCamera()
 
             camera.framerate = 20
             #filename= datatime.now().strftime("%y-%m-%d_%H.%M.%S.h264")
-            filename= '/home/pi/Nordic-Thingy52-Nodejs/examples/video.h264' 
+            filename= '/home/pi/Desktop/smart_home_pi/video.h264' 
             camera.start_recording(filename)
             
             camera.wait_recording(5)
@@ -40,33 +42,36 @@ while True:
             
             
             camera.stop_recording()
-            
-            bucket_name='iotproject999-b5fee.appspot.com'
-            client = storage.Client() #.from_service_account_json('iotproject999-7849e5f382a0.json')
-            bucket = client.get_bucket(bucket_name)
-            blob = bucket.blob('cameraVideo') #destination
+            camera.close()
+            print("video recording finished")
+
+            # bucket_name='iotproject999-b5fee.appspot.com'
+            # client = storage.Client() #.from_service_account_json('iotproject999-7849e5f382a0.json')
+            # bucket = client.get_bucket(bucket_name)
+            # blob = bucket.blob('cameraVideo') #destination
+            #
             #blob.delete()
             #bucket = client.get_bucket(bucket_name)
             #blob = bucket.blob('theVideo') #destination
 
             
-
-            from subprocess import CalledProcessError
-            command = "MP4Box -add {} {}.mp4".format("/home/pi/Nordic-Thingy52-Nodejs/examples/video.h264", os.path.splitext("forFirebase")[0])
-            try:
-                output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-            except subprocess.CalledProcessError as e:
-                print('error error in converting')
+            
+            # from subprocess import CalledProcessError
+            # command = "MP4Box -add {} {}.mp4".format("/home/pi/Nordic-Thingy52-Nodejs/examples/video.h264", os.path.splitext("forFirebase")[0])
+            # try:
+            #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
+            # except subprocess.CalledProcessError as e:
+            #     print('error error in converting')
 
             
             #os.system("sudo MP4Box -add /home/pi/Desktop/video.h264 filename.mp4")
             #.Popen('ls /home/pi
 
             
-            downloadURL = blob.upload_from_filename(filename='/home/pi/Nordic-Thingy52-Nodejs/examples/forFirebase.mp4')   #/home/pi/Downloads/image.jpeg'
+            # downloadURL = blob.upload_from_filename(filename='/home/pi/Nordic-Thingy52-Nodejs/examples/forFirebase.mp4')   #/home/pi/Downloads/image.jpeg'
             
-
-            print(blob.public_url)
+            # print("break")
+            
 
             #imageBlob = bucket.get_blob('cameraVideo')
             #imageBlob.download_as_string()
@@ -78,13 +83,13 @@ while True:
             
             pass
         finally:    
-            camera.close()
+            # camera.close()
                     
-            #print("removing files")
-            os.remove("/home/pi/Nordic-Thingy52-Nodejs/examples/forFirebase.mp4")
-            os.remove("/home/pi/Nordic-Thingy52-Nodejs/examples/video.h264")
-            #print("removing files finished")
-            
+            # #print("removing files")
+            # os.remove("/home/pi/Nordic-Thingy52-Nodejs/examples/forFirebase.mp4")
+            # os.remove("/home/pi/Nordic-Thingy52-Nodejs/examples/video.h264")
+            # #print("removing files finished")
+            # print(blob.public_url)
             #print("camera closing here")
             break
         

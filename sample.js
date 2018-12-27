@@ -1,4 +1,4 @@
-var myPythonScript = 'capture-video.py'
+var myPythonScript = 'capture-video.py';
 
 var {PythonShell} = require('python-shell');
 var pyshell = new PythonShell(myPythonScript);

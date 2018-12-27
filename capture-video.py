@@ -43,8 +43,14 @@ while True:
             
             camera.stop_recording()
             camera.close()
-            print("video recording finished")
+            
 
+            command = "MP4Box -add {} {}.mp4".format(filename, os.path.splitext("forFirebase")[0])
+            try:
+                output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
+            except subprocess.CalledProcessError as e:
+                print('error error in converting')
+            print("video recording finished",command)
             # bucket_name='iotproject999-b5fee.appspot.com'
             # client = storage.Client() #.from_service_account_json('iotproject999-7849e5f382a0.json')
             # bucket = client.get_bucket(bucket_name)

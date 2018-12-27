@@ -36,7 +36,9 @@ exports.uploadVideoFile = (filePath, remoteFile, fileMime) => {
     .then((data) => {
 
       let file = data[0];
-
+      database.ref('videoDownloadLink/').set({
+        video_url : "https://firebasestorage.googleapis.com/v0/b/" + bucket.name + "/o/" + encodeURIComponent(file.name) + "?alt=media&token=" + uuid
+      })
       return Promise.resolve("https://firebasestorage.googleapis.com/v0/b/" + bucket.name + "/o/" + encodeURIComponent(file.name) + "?alt=media&token=" + uuid);
     });
 }

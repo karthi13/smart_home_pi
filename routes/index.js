@@ -1,5 +1,6 @@
 var express = require('express');
 var firebaseStore = require('../src/Database/send-environment-data');
+var { ChangeHSAPIPlugStatus } = require('../src/ReadSensor/environment-sensor');
 var router = express.Router();
 
 /* GET home page. */
@@ -11,7 +12,9 @@ router.get('/hsapi',function(req, res, next){
 
   console.log(req.query, "Status defined");
   firebaseStore.firebaseWriteHSPlugData(req.query.plugStatus);
-  res.send("Hello")
+  ChangeHSAPIPlugStatus(req.query.plugStatus);
+  res.status(200).send({plugStatus: req.query.plugStatus});
+
 });
 
 module.exports = router;

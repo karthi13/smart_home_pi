@@ -58,8 +58,8 @@ exports.firebaseWriteEnvironmentData = function (environmentData) {
   var date = new Date()
   var ISOString = date.toISOString();
   var timestamp = ISOString.split('T')[0] + '/' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
-  console.log(timestamp);
-  database.ref('thingy/' + thingy_id + '/' + timestamp).set({
+  console.log(timestamp, " thingy_id ", environmentData.thingy_id);
+  database.ref('thingy/' + environmentData.thingy_id + '/' + timestamp).set({
     timestamp,
     eco2: environmentData.eco2,
     tvoc: environmentData.tvoc,
@@ -73,8 +73,9 @@ exports.firebaseWriteHSPlugData = function (plugStatus) {
   var date = new Date()
   var ISOString = date.toISOString();
   var timestamp = ISOString.split('T')[0] + '/' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
-
+  console.log("inside hsapi write data");
   database.ref('hsAPI100/').set({
     plugStatus
   })
+  console.log("exit hsapi write data");
 }

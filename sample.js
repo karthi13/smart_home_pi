@@ -5,7 +5,7 @@ var fs = require('fs');
 
 var { PythonShell } = require('python-shell');
 var pyshell = new PythonShell(myPythonScript);
-// console.log(__dirname)
+
 const file = __dirname + "/forFirebase.mp4";
 const fileMime = 'video/mp4';
 const remotePath = '/videos';

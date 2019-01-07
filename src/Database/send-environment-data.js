@@ -57,7 +57,7 @@ exports.uploadVideoFile = (filePath, remoteFile, fileMime) => {
 exports.firebaseWriteEnvironmentData = function (environmentData) {
   var date = new Date()
   var ISOString = date.toISOString();
-  var timestamp = ISOString.split('T')[0] + '/' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
+  var timestamp = ISOString.split('T')[0] + ' ' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
   console.log(timestamp);
   database.ref('thingy/' + thingy_id + '/' + timestamp).set({
     timestamp,
@@ -72,7 +72,7 @@ exports.firebaseWriteEnvironmentData = function (environmentData) {
 exports.firebaseWriteHSPlugData = function (plugStatus) {
   var date = new Date()
   var ISOString = date.toISOString();
-  var timestamp = ISOString.split('T')[0] + '/' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
+  var timestamp = ISOString.split('T')[0] + ' ' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
 
   database.ref('hsAPI100/').set({
     plugStatus

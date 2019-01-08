@@ -12,7 +12,8 @@ router.get('/hsapi',function(req, res, next){
 
   console.log(req.query, "Status defined");
   firebaseStore.firebaseWriteHSPlugData(req.query.plugStatus);
-  ChangeHSAPIPlugStatus(req.query.plugStatus);
+  let state = ChangeHSAPIPlugStatus();
+  console.log("exit after write");
   res.status(200).send({plugStatus: req.query.plugStatus});
 
 });

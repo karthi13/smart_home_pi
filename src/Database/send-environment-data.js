@@ -57,16 +57,13 @@ exports.uploadVideoFile = (filePath, remoteFile, fileMime) => {
 exports.firebaseWriteEnvironmentData = function (environmentData) {
   var date = new Date()
   var ISOString = date.toISOString();
-<<<<<<< HEAD
+
   var timestamp = ISOString.split('T')[0] + ' ' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
   console.log(timestamp);
-  database.ref('thingy/' + thingy_id + '/' + timestamp).set({
-=======
-  var timestamp = ISOString.split('T')[0] + '/' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
-  console.log(timestamp, " thingy_id ", environmentData.thingy_id);
-  database.ref('thingy/' + environmentData.thingy_id + '/' + timestamp).set({
->>>>>>> 67c89fd2faff83c7cf5f0fca446d6323134727b8
-    timestamp,
+  database.ref('thingy/' + environmentData.thingy_id + '/' + ISOString.split('T')[0] + '/' + timestamp).set({
+
+
+    timestamp : ISOString.split('T')[0] + ' ' + ISOString.split('T')[1].split('.')[0] ,
     eco2: environmentData.eco2,
     tvoc: environmentData.tvoc,
     temperature: environmentData.temperature,
@@ -78,15 +75,10 @@ exports.firebaseWriteEnvironmentData = function (environmentData) {
 exports.firebaseWriteHSPlugData = function (plugStatus) {
   var date = new Date()
   var ISOString = date.toISOString();
-<<<<<<< HEAD
   var timestamp = ISOString.split('T')[0] + ' ' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
 
-=======
-  var timestamp = ISOString.split('T')[0] + '/' + ISOString.split('T')[1].split('Z')[0].replace('.', '_');
-  console.log("inside hsapi write data");
->>>>>>> 67c89fd2faff83c7cf5f0fca446d6323134727b8
   database.ref('hsAPI100/').set({
     plugStatus
   })
-  console.log("exit hsapi write data");
+  console.log("exit hsapi write data"); 
 }

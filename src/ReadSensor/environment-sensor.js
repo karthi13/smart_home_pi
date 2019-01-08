@@ -160,17 +160,32 @@ exports.onDiscover = function (thingy) {
         });
     });
 }
+var statt = true;
+
+function changeStatus(plug){
+    let state = plug.getPowerState().then(res => {return res;});
+    state.then(res => {console.log("response of state = ",res);statt = res}).catch(error => console.log);
+    return statt;
+}
 
 // Thingy.discover(onDiscover);
 
-exports.ChangeHSAPIPlugStatus = function(plugStatus){
+exports.ChangeHSAPIPlugStatus = function(){
     console.log("inside change plug sttaus",HSAPI100_URL);
-    const plug = client.getDevice({host : HSAPI100_URL}).then((device) =>{
-        console.log("inside get device");
-        // device.getSysInfo().then(console.log);
-        let state = device.getPowerState().then(res => {return res;});
-        console.log(state)
-        device.setPowerState(!state);
-    })
+    // const plug = client.getDevice({host : HSAPI100_URL}).then((device) =>{
+    //     console.log("inside get device");
+    //     device.getSysInfo().then(console.log);
+    //     //let state = device.getPowerState().then(res => {return res;});
+    //     //console.log(state)
+    //     device.setPowerState(plugStatus);
+    // })
+    console.log("initail status = ",statt);
+    const plug = client.getPlug({host: HSAPI100_URL});
+    let stat =  changeStatus(plug);
+    console.log("exit status = ",stat);
+    //statt = !statt;
+    plug.setPowerState(stat);
+    return stat;
+
     console.log("exit change plug sttaus");
 }

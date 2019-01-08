@@ -11,6 +11,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var environmentSensorReading = require('./src/ReadSensor/environment-sensor');
 var app = express();
+
+// var runCamera = require('./sample');
 app.use(cors());
 
 
@@ -46,6 +48,12 @@ app.use(function(err, req, res, next) {
 
 app.listen(4445,() => {
   Thingy.discover(environmentSensorReading.onDiscover);
+  console.log("Run camera called ")
+  
+
+  //runCamera.runCamera();
+
+  console.log("run camera executed")
 });
 
 module.exports = app;
